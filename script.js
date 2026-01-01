@@ -1,0 +1,53 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target){
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Mobile Menu Toggle
+    const navToggle = document.querySelector('.colorlib-nav-toggle');
+    const body = document.body;
+    
+    if(navToggle) {
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (body.classList.contains('offcanvas')) {
+                body.classList.remove('offcanvas');
+            } else {
+                body.classList.add('offcanvas');
+            }
+        });
+    }
+
+    // Highlighting Active Section in Sidebar
+    const sections = document.querySelectorAll('section');
+    const navLi = document.querySelectorAll('#colorlib-main-menu ul li');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('data-section');
+            }
+        });
+
+        navLi.forEach( li => {
+            li.classList.remove('active');
+            if (li.querySelector('a').getAttribute('data-nav-section') === current) {
+                li.classList.add('active');
+            }
+        });
+    });
+
+});
