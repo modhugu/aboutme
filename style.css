@@ -228,8 +228,8 @@ a:hover {
 
 .slider-text-inner h1 {
     font-size: 60px;
-    font-weight: 900;
-    color: #0066cc;
+    font-weight: 900 !important;
+    color: #0066cc !important;
     margin-bottom: 20px;
     line-height: 1.1;
 }
@@ -238,15 +238,15 @@ a:hover {
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 30px;
-    font-weight: 600;
-    color: #0066cc;
+    font-weight: 600 !important;
+    color: #0066cc !important;
     font-family: var(--font-body);
 }
 
 .btn-learn {
-    color: #fff;
-    background: #0066cc;
-    border: 2px solid #0066cc;
+    color: #fff !important;
+    background: #0066cc !important;
+    border: 2px solid #0066cc !important;
     padding: 10px 20px;
     font-weight: 700;
     border-radius: 5px;
