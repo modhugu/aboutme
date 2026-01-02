@@ -54,18 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hero Slider - Disabled (only one slide)
-    // const slides = document.querySelectorAll('.slides li');
-    // let currentSlide = 0;
+    // Hero Slider
+    const slides = document.querySelectorAll('.slides li');
+    let currentSlide = 0;
 
-    // if (slides.length > 0) {
-    //     slides[0].classList.add('active-slide');
-    //     setInterval(() => {
-    //         slides[currentSlide].classList.remove('active-slide');
-    //         currentSlide = (currentSlide + 1) % slides.length;
-    //         slides[currentSlide].classList.add('active-slide');
-    //     }, 5000);
-    // }
+    if (slides.length > 0) {
+        slides[0].classList.add('active-slide');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active-slide');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active-slide');
+        }, 5000);
+    }
 
 
 });

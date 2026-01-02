@@ -192,13 +192,14 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100vh;
-    opacity: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
     z-index: 1;
 }
 
 .slides li:first-child {
-    opacity: 1;
-    z-index: 2;
+    opacity: 0;
+    z-index: 1;
 }
 
 .slides li.active-slide {
