@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if(target){
+            if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const navToggle = document.querySelector('.colorlib-nav-toggle');
     const body = document.body;
-    
-    if(navToggle) {
+
+    if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.preventDefault();
             if (body.classList.contains('offcanvas')) {
@@ -42,12 +42,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        navLi.forEach( li => {
+        navLi.forEach(li => {
             li.classList.remove('active');
             if (li.querySelector('a').getAttribute('data-nav-section') === current) {
                 li.classList.add('active');
             }
         });
     });
+
+    // Hero Slider
+    const slides = document.querySelectorAll('.slides li');
+    let currentSlide = 0;
+
+    if (slides.length > 0) {
+        slides[0].classList.add('active-slide');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active-slide');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active-slide');
+        }, 5000);
+    }
 
 });
