@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            // Don't prevent default for download links or external links
+            if (this.hasAttribute('download') || this.getAttribute('href').startsWith('http')) {
+                return;
+            }
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
