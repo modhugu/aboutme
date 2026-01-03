@@ -468,12 +468,21 @@ section {
 /* Projects */
 .project {
     width: 100%;
-    height: 300px;
+    height: 350px;
     margin-bottom: 30px;
     background-size: cover;
     background-position: center;
     position: relative;
     display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .project .desc {
@@ -484,15 +493,20 @@ section {
     right: 0;
     background: rgba(44, 152, 240, 0.9);
     opacity: 0;
-    transition: 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.4s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
 .project:hover .desc {
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .project .desc h3 a {
@@ -533,19 +547,44 @@ section {
     border-color: var(--color-primary);
 }
 
-.btn-send-message {
-    background: var(--color-primary);
-    color: #fff;
-    border: none;
-    padding: 15px 30px;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-radius: 30px;
-    cursor: pointer;
+/* Contact & Thanks Enhancements */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
 }
 
-.btn-send-message:hover {
-    background: #1a86db;
+.colorlib-contact .colorlib-feature {
+    margin-bottom: 0;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.colorlib-contact .colorlib-feature:hover {
+    transform: translateY(-5px);
+}
+
+.colorlib-contact .colorlib-icon {
+    font-size: 30px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.social-links a {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+    opacity: 1 !important;
 }
 
 /* Helpers */
