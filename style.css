@@ -657,73 +657,83 @@ section {
     }
 }
 
-/* Progress Bars */
-.progress-wrap {
-    width: 100%;
-    float: left;
+/* Skill Item Dropdown */
+.skill-item {
+    background: #fff;
+    padding: 20px;
     margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--color-primary);
 }
 
-.progress-wrap h3 {
+.skill-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-header h3 {
+    margin: 0;
     font-size: 16px;
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.progress {
-    height: 6px;
-    box-shadow: none;
-    background: #f2f3f7;
-    overflow: visible;
-    border-radius: 6px;
-    margin-bottom: 0;
-}
-
-.progress-bar {
-    background: var(--color-primary);
-    box-shadow: none;
-    font-size: 12px;
-    line-height: 1.2;
-    color: #000;
     font-weight: 600;
-    text-align: right;
-    position: relative;
-    overflow: visible;
-    border-radius: 6px;
 }
 
-.progress-bar span {
-    position: absolute;
-    top: -28px;
-    right: 0;
+.toggle-icon {
     font-size: 14px;
-    font-weight: 500;
-    color: #000;
+    transition: transform 0.3s ease;
+    color: var(--color-primary);
 }
 
-.progress-bar.color-1 {
-    background: var(--color-primary);
+.skill-item.active .toggle-icon {
+    transform: rotate(180deg);
 }
 
-.progress-bar.color-2 {
-    background: #ec5453;
+.skill-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
 }
 
-.progress-bar.color-3 {
-    background: #f9bf3f;
+.skill-item.active .skill-details {
+    max-height: 500px;
+    padding-top: 20px;
 }
 
-.progress-bar.color-4 {
-    background: #a84cb8;
+.skill-details ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: none;
 }
 
-.progress-bar.color-5 {
-    background: #2fa499;
+.skill-details ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+    transition: color 0.2s ease;
 }
 
-.progress-bar.color-6 {
-    background: #4054b2;
+.skill-details ul li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 12px;
+}
+
+.skill-details ul li:hover {
+    color: var(--color-primary);
 }
 
 /* Panels (Education) */

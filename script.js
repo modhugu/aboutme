@@ -80,3 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => revealObserver.observe(el));
 
 });
+
+function toggleSkill(element) {
+    // Close other skills if one is open (accordion effect)
+    document.querySelectorAll('.skill-item').forEach(item => {
+        if (item !== element) {
+            item.classList.remove('active');
+        }
+    });
+
+    // Toggle current skill
+    element.classList.toggle('active');
+}
