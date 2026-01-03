@@ -1,0 +1,38 @@
+---
+- name: Auto-Healing System for Web Services
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check if Nginx is running
+      ansible.builtin.service_facts:
+    
+    - name: Restart Nginx if it is not running
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+      when: ansible_facts.services['nginx.service'].state != 'running'
+      notify: Log recovery action
+
+    - name: Check if MySQL is running
+      ansible.builtin.service:
+        name: mysql
+        state: started
+      register: mysql_status
+      ignore_errors: yes
+
+    - name: Fix MySQL permissions if it failed to start
+      ansible.builtin.command: chown -R mysql:mysql /var/lib/mysql
+      when: mysql_status.failed
+      notify: Restart MySQL
+
+  handlers:
+    - name: Log recovery action
+      ansible.builtin.lineinfile:
+        path: /var/log/auto-healing.log
+        line: "{{ ansible_date_time.iso8601 }} - Nginx was restarted due to failure"
+        create: yes
+
+    - name: Restart MySQL
+      ansible.builtin.service:
+        name: mysql
+        state: restarted
