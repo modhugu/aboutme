@@ -8,11 +8,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+
+            let target;
+            const href = this.getAttribute('href');
+            if (href === '#') {
+                const section = this.getAttribute('data-nav-section');
+                target = document.querySelector(`section[data-section="${section}"]`);
+            } else {
+                target = document.querySelector(href);
+            }
+
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
+
+                // Close mobile menu if open
+                if (document.body.classList.contains('offcanvas')) {
+                    document.body.classList.remove('offcanvas');
+                }
             }
         });
     });
