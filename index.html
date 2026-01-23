@@ -2,6 +2,21 @@
 <html lang="en">
 
 <head>
+    <script>
+  // A/B Deployment Traffic Splitter (50/50)
+  (function() {
+    var newWebsiteUrl = "https://modhugu.github.io/portfolio-A-B-deployment/"; // New Site URL
+    var assignedVersion = localStorage.getItem('portfolio_version');
+    if (!assignedVersion) {
+      // 50% chance to see the new site
+      assignedVersion = Math.random() > 0.5 ? 'new' : 'old';
+      localStorage.setItem('portfolio_version', assignedVersion);
+    }
+    if (assignedVersion === 'new') {
+      window.location.href = newWebsiteUrl;
+    }
+  })();
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sampath Modhugu | Portfolio</title>
